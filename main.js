@@ -96,6 +96,7 @@ socket.on("newRotation", (data) => {
 
   // Puedes actualizar la rotación del cubo u otra acción aquí
   // Por ejemplo:
+  console.log("el x: ", data.x, " el typeof es ", typeof data.x);
   cube.rotation.x = degreesToRadians(30);
   cube.rotation.y = degreesToRadians(30);
   cube.rotation.z = degreesToRadians(30);
