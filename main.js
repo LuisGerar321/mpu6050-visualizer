@@ -90,10 +90,10 @@ function animate() {
   renderer.render(scene, camera);
 }
 
-socket.on("newRotation", (data) => {
+socket.on("newRotation", (dataOnCallback) => {
   // Maneja el evento "newRotation" aquí
-  console.log("Nuevo evento de rotación recibido:", data);
-  const { data } = data;
+  console.log("Nuevo evento de rotación recibido:", dataOnCallback);
+  const { data } = dataOnCallback;
 
   if (!data || !data.x || !data.y || !data.z) return;
   // Puedes actualizar la rotación del cubo u otra acción aquí
