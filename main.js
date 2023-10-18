@@ -100,9 +100,9 @@ socket.on("newRotation", (dataOnCallback) => {
   // Por ejemplo:
   console.log("el x: ", data, " el typeof es ", typeof data.x);
 
-  cube.rotation.x += degreesToRadians(Number(data.x));
-  cube.rotation.y += degreesToRadians(0);
-  cube.rotation.z += degreesToRadians(0);
+  cube.rotation.x = degreesToRadians(Number(data.x));
+  cube.rotation.y = degreesToRadians(0);
+  cube.rotation.z = degreesToRadians(0);
   edgeMesh.rotation.copy(cube.rotation);
   axesHelper.rotation.copy(cube.rotation);
 
