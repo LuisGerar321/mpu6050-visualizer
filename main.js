@@ -1,4 +1,7 @@
 import * as THREE from "three";
+import io from "socket.io-client";
+
+const socket = io("http://54-241-53-6");
 
 function degreesToRadians(degrees) {
   return (degrees * Math.PI) / 180;
@@ -78,12 +81,26 @@ camera.position.y = 1.5;
 function animate() {
   requestAnimationFrame(animate);
 
-  cube.rotation.x += degreesToRadians(1);
-  cube.rotation.y += degreesToRadians(1);
-  cube.rotation.z += degreesToRadians(1);
-  edgeMesh.rotation.copy(cube.rotation);
-  axesHelper.rotation.copy(cube.rotation);
+  // cube.rotation.x += degreesToRadians(1);
+  // cube.rotation.y += degreesToRadians(1);
+  // cube.rotation.z += degreesToRadians(1);
+  // edgeMesh.rotation.copy(cube.rotation);
+  // axesHelper.rotation.copy(cube.rotation);
   renderer.render(scene, camera);
 }
+
+socket.on("newRotation", (data) => {
+  // Maneja el evento "newRotation" aquí
+  console.log("Nuevo evento de rotación recibido:", data);
+
+  // Puedes actualizar la rotación del cubo u otra acción aquí
+  // Por ejemplo:
+  cube.rotation.x = degreesToRadians(data.x);
+  cube.rotation.y = degreesToRadians(data.y);
+  cube.rotation.z = degreesToRadians(data.z);
+
+  // Asegúrate de llamar a render para actualizar la vista
+  renderer.render(scene, camera);
+});
 
 animate();
