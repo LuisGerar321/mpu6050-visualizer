@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import io from "socket.io-client";
 
-const socket = io("http://54-241-53-6");
+const socket = io("http://54.241.53.6");
 
 function degreesToRadians(degrees) {
   return (degrees * Math.PI) / 180;
