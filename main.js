@@ -102,7 +102,7 @@ socket.on("newRotation", (dataOnCallback) => {
 
   cube.rotation.x = degreesToRadians(Number(data.y));
   cube.rotation.y = degreesToRadians(0 ?? Number(data.y));
-  cube.rotation.z = degreesToRadians(Number(data.x)); //nice
+  cube.rotation.z = degreesToRadians(0 ?? Number(data.x)); //nice
   edgeMesh.rotation.copy(cube.rotation);
   axesHelper.rotation.copy(cube.rotation);
 
