@@ -86,6 +86,7 @@ function animate() {
   // cube.rotation.z += degreesToRadians(1);
   // edgeMesh.rotation.copy(cube.rotation);
   // axesHelper.rotation.copy(cube.rotation);
+  console.log("Rotation cube on : ", cube.rotation);
   renderer.render(scene, camera);
 }
 
