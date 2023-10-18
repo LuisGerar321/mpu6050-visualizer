@@ -96,9 +96,9 @@ socket.on("newRotation", (data) => {
 
   // Puedes actualizar la rotación del cubo u otra acción aquí
   // Por ejemplo:
-  cube.rotation.x = degreesToRadians(data.x);
-  // cube.rotation.y = degreesToRadians(data.y);
-  // cube.rotation.z = degreesToRadians(data.z);
+  cube.rotation.x = degreesToRadians(Number(data.x));
+  cube.rotation.y = degreesToRadians(Number(data.y));
+  cube.rotation.z = degreesToRadians(Number(data.z));
 
   // Asegúrate de llamar a render para actualizar la vista
   renderer.render(scene, camera);
