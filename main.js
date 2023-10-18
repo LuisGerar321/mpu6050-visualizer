@@ -93,13 +93,18 @@ function animate() {
 socket.on("newRotation", (data) => {
   // Maneja el evento "newRotation" aquí
   console.log("Nuevo evento de rotación recibido:", data);
+  const { data } = data;
 
+  if (!data || !data.x || !data.y || !data.z) return;
   // Puedes actualizar la rotación del cubo u otra acción aquí
   // Por ejemplo:
   console.log("el x: ", data, " el typeof es ", typeof data.x);
-  cube.rotation.x = degreesToRadians(30);
-  cube.rotation.y = degreesToRadians(30);
-  cube.rotation.z = degreesToRadians(30);
+
+  cube.rotation.x += degreesToRadians(Number(data.x));
+  cube.rotation.y += degreesToRadians(Number(data.y));
+  cube.rotation.z += degreesToRadians(Number(data.z));
+  edgeMesh.rotation.copy(cube.rotation);
+  axesHelper.rotation.copy(cube.rotation);
 
   // Asegúrate de llamar a render para actualizar la vista
   renderer.render(scene, camera);
