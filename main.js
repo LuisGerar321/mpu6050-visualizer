@@ -2,6 +2,7 @@ import * as THREE from "three";
 import io from "socket.io-client";
 
 const socket = io("http://54.241.53.6");
+// const socket = io("http://localhost:3000");
 
 function degreesToRadians(degrees) {
   return (degrees * Math.PI) / 180;
@@ -74,7 +75,7 @@ scene.add(axesHelper);
 
 // Establece la posición de la cámara
 camera.position.z = 10;
-camera.position.x = 4;
+camera.position.x = 1;
 camera.position.y = 1.5;
 // Establece la rotación de la cámara en 45 grados en el eje X
 
@@ -86,7 +87,6 @@ function animate() {
   // cube.rotation.z += degreesToRadians(1);
   // edgeMesh.rotation.copy(cube.rotation);
   // axesHelper.rotation.copy(cube.rotation);
-  console.log("Rotation cube on : ", cube.rotation);
   renderer.render(scene, camera);
 }
 
@@ -98,7 +98,6 @@ socket.on("newRotation", (dataOnCallback) => {
   if (!data || !data.x || !data.y || !data.z) return;
   // Puedes actualizar la rotación del cubo u otra acción aquí
   // Por ejemplo:
-  console.log("el x: ", data, " el typeof es ", typeof data.x);
 
   cube.rotation.x = degreesToRadians(Number(data.y)); // nice
   cube.rotation.y = degreesToRadians(0 ?? Number(data.z));
